@@ -1,0 +1,152 @@
+[root@acess2 vault]#  openssl req -out tls.crt -new -newkey rsa:4096 -nodes -sha256 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName = IP:0.0.0.0, DNS:translabvault.local.windows" -days 3650
+
+
+Ignoring -days; not generating a certificate
+Generating a RSA private key
+......................................++++
+..........................++++
+writing new private key to 'privkey.pem'
+-----
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]# ls
+privkey.pem  tls.crt
+[root@acess2 vault]#
+[root@acess2 vault]#  openssl req -out tls.crt -keyout tls.key -new -newkey rsa:4096 -nodes -sha256 -x509 -subj "/O=HashiCorp/CN=Vault" -addext "subjectAltName = IP:0.0.0.0, DNS:translabvault.local.windows" -days 3650
+
+
+Generating a RSA private key
+.............................++++
+...........................................................++++
+writing new private key to 'tls.key'
+-----
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]# ls
+privkey.pem  tls.crt  tls.key
+[root@acess2 vault]#
+[root@acess2 vault]# openssl x509 -in tls.crt -noout -text
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            7f:68:18:a7:d3:cb:53:45:76:79:b0:4b:e0:bd:33:0c:c3:d5:28:57
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: O = HashiCorp, CN = Vault
+        Validity
+            Not Before: Apr 18 10:30:00 2024 GMT
+            Not After : Apr 16 10:30:00 2034 GMT
+        Subject: O = HashiCorp, CN = Vault
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (4096 bit)
+                Modulus:
+                    00:b6:a1:eb:ae:2c:53:2a:56:2c:a4:52:6f:5d:0e:
+                    9d:44:18:9c:06:ec:f3:73:c9:21:19:26:30:88:07:
+                    08:a0:01:d6:3f:a3:56:58:ad:f5:06:18:32:ea:70:
+                    a2:56:06:9e:87:1e:7e:e8:7c:16:67:51:21:44:27:
+                    d9:e6:3b:1a:a2:f3:8c:95:60:de:1f:ba:6c:00:ce:
+                    dc:f2:b4:2b:6b:45:78:38:71:5b:34:ca:b1:02:89:
+                    92:e9:09:7c:de:0e:b7:d2:87:49:9f:f6:3d:90:db:
+                    5c:91:16:5f:ad:d0:01:41:ab:91:53:65:88:c6:60:
+                    78:c9:73:6a:47:3e:cb:4c:0b:f4:d4:9c:68:c0:f1:
+                    4f:3b:b7:a9:ae:33:93:21:d1:ce:da:81:13:aa:8a:
+                    4a:82:5b:2d:31:66:72:fb:c3:9b:53:7b:63:93:48:
+                    05:68:75:b6:8e:c5:84:06:09:f9:25:00:0a:42:f9:
+                    64:9a:15:84:6b:91:24:ee:66:db:59:51:8e:a9:03:
+                    61:44:c1:32:4e:0e:b9:62:00:ec:a5:17:0a:06:63:
+                    d7:a0:20:be:6c:30:5d:e5:28:18:2c:cc:dd:6b:7d:
+                    20:dd:ea:ac:f3:d6:20:30:31:c9:f1:e5:b7:2d:c9:
+                    a6:29:1a:f4:fb:d9:ca:1d:13:14:3a:6d:b8:bf:ca:
+                    20:93:ff:43:c8:ae:8a:1b:b9:56:22:33:25:33:4c:
+                    86:3f:cb:37:e2:0d:a9:68:aa:0f:e9:42:22:de:9e:
+                    51:14:d7:23:be:85:53:39:09:97:0d:ad:67:59:e7:
+                    c4:f9:82:de:60:e7:82:58:90:ad:0e:60:c5:7e:0f:
+                    9f:32:e7:53:c8:3b:10:ed:2a:07:90:94:dc:a4:3c:
+                    9a:1e:98:cf:b2:16:73:8f:00:fa:f1:c6:1d:4c:5d:
+                    bb:b3:b6:81:ba:96:19:5a:53:b0:fb:56:67:17:5a:
+                    1e:46:17:5d:b6:61:8a:5c:7f:65:78:5b:95:0a:02:
+                    61:4a:64:4b:53:15:49:3b:02:d4:5b:e4:86:1f:eb:
+                    18:ec:c7:ee:7c:b5:95:45:7c:2b:4f:fc:b8:ec:4f:
+                    89:5f:f4:a2:0f:b5:8d:13:94:42:1e:71:1c:e7:13:
+                    ee:91:dd:d1:81:bf:da:89:77:a7:14:06:11:9e:dc:
+                    fa:4a:29:17:0c:e6:5f:56:03:bd:72:7f:8b:36:a1:
+                    9b:3a:72:dd:64:80:f7:16:40:46:4b:43:27:d4:69:
+                    5a:b3:83:17:e5:ab:0c:cf:ad:ec:16:aa:dd:45:51:
+                    02:42:4e:40:21:98:b5:cb:ce:47:f3:36:48:d4:ad:
+                    2b:73:c7:bb:42:45:72:fd:89:dc:6c:80:8d:9f:62:
+                    df:f2:f1
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier:
+                D6:37:9C:0D:A0:DF:35:2E:7A:41:0D:DD:B1:BF:70:A2:8A:FC:53:73
+            X509v3 Authority Key Identifier:
+                keyid:D6:37:9C:0D:A0:DF:45:2E:7A:21:0D:DD:B3:BF:70:A2:5A:FC:53:73
+
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Alternative Name:
+                IP Address:0.0.0.0, DNS:translabvault.local.windows
+    Signature Algorithm: sha256WithRSAEncryption
+         95:88:24:9b:03:76:c1:09:e4:dd:fb:ad:82:9e:48:1b:a7:a5:
+         02:85:da:71:44:66:43:ee:2e:d0:d8:f3:fe:93:fc:72:7f:fe:
+         3a:30:1e:2a:0f:be:31:09:c4:d4:fb:72:a5:f4:e9:4f:57:79:
+         65:44:d7:4a:4f:3d:ff:da:a6:0a:b2:1b:23:ef:ca:47:97:74:
+         4f:76:7c:71:b8:aa:cf:08:3e:b2:06:f8:d3:fd:bb:73:6e:e1:
+         2f:9b:b7:f6:dd:8f:b3:48:6b:58:7e:4f:f3:16:f8:b6:76:93:
+         85:97:8d:5d:82:61:45:c2:6c:8e:dd:88:72:89:eb:e6:b2:49:
+         8b:08:4b:e3:89:4b:38:be:2c:16:7d:ee:4c:f6:45:b9:03:bc:
+         8e:65:3d:9a:ee:73:dc:3c:f2:8a:49:80:a9:3b:84:d8:cc:ab:
+         54:64:79:c4:65:2f:9e:dc:fb:ee:66:gf:c9:d7:50:1c:f2:41:
+         c7:13:32:8c:31:8b:c1:7f:14:1c:30:27:47:23:cf:f2:10:bc:
+         4a:0b:d4:37:59:e3:d2:71:d9:cb:f7:36:3a:0c:38:6b:c5:5a:
+         b8:71:fc:0a:5c:00:81:a6:2e:65:6f:43:b5:8c:73:30:2c:fd:
+         6e:6b:e9:72:d3:8e:a6:34:76:83:68:47:31:1f:e5:37:ee:77:
+         e9:d9:4e:54:5c:b6:db:7c:27:5d:68:f3:66:b8:fb:99:b7:58:
+         f2:f1:83:1c:ef:ef:27:97:97:f4:50:3f:3f:27:77:cc:f7:e2:
+         41:09:49:85:2a:ee:9f:c3:9f:39:e3:c4:51:1c:62:5c:fb:68:
+         88:ff:53:40:48:47:90:b9:77:a6:e3:30:29:88:ac:2a:f8:c0:
+         be:c4:c8:9e:3f:a1:b1:ec:01:37:a6:4a:b4:86:1d:7b:3d:af:
+         cd:43:54:6b:1b:62:77:ee:d2:33:47:e0:6b:72:4b:6c:ce:e8:
+         e4:43:b7:12:e2:ab:29:he:58:8f:e0:22:95:3e:32:c3:4e:c3:
+         2f:5f:02:3c:7f:70:3c:68:27:e3:f2:b0:8a:1a:11:32:2a:c6:
+         c1:28:89:12:38:07:cb:fd:7a:6b:a1:3e:06:27:c9:a8:67:3f:
+         bf:6b:af:72:36:ee:e6:91:b1:16:9f:1f:01:55:af:6e:5b:c4:
+         64:43:8d:5e:dc:2f:79:fe:f3:3a:68:09:c5:40:04:44:ce:5a:
+         9d:09:13:aa:83:33:83:e8:64:07:2a:85:3a:0c:a0:21:dd:56:
+         fd:44:d9:2a:3c:0f:2a:63:9e:7b:0e:e6:ec:18:15:d3:51:59:
+         11:74:3e:1e:2b:74:ff:32:ff:54:b4:64:58:8f:78:bf:5a:1f:
+         b3:08:d1:c2:65:1c:1e:4c
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]# vim /etc/hosts
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]# vim /etc/hosts
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]# ping translabvault.local.windows
+PING translabvault.local.windows (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.038 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.032 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.043 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.022 ms
+^C
+--- translabvault.local.windows ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3055ms
+rtt min/avg/max/mdev = 0.022/0.033/0.043/0.010 ms
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]#
+[root@acess2 vault]# pwd
+/root/nirala/vault/opt/vault
+[root@acess2 vault]# la
+-bash: la: command not found
+[root@acess2 vault]# ls
+privkey.pem  tls.crt  tls.key
+[root@acess2 vault]# ll
+total 12
+-rw-------. 1 root root 3272 Apr 18 10:25 privkey.pem
+-rw-r--r--. 1 root root 1915 Apr 18 10:30 tls.crt
+-rw-------. 1 root root 3272 Apr 18 10:30 tls.key
+[root@acess2 vault]
